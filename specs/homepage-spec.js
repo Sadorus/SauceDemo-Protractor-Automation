@@ -12,9 +12,7 @@ beforeEach(async () => {
 
 describe('Homepage', () => {
   it('Log into your account', () => {
-    homePage.usernameInput.sendKeys(homePage.standardUsername);
-    homePage.passwordInput.sendKeys(homePage.password);
-    homePage.logInButton.click();
+    homePage.fillLoginForm();
     // ...?
   });
 });
