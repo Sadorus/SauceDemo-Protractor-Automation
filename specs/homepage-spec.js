@@ -13,6 +13,5 @@ beforeEach(async () => {
 describe('Homepage', () => {
   it('Log into your account', () => {
     homePage.fillLoginForm();
-    // ...?
   });
 });
