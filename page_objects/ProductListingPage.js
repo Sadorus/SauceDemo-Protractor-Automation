@@ -3,6 +3,21 @@ const EC = protractor.ExpectedConditions;
 
 module.exports = class ProdutctListingPage {
   constructor() {
+    this.completeOrderContainer = element(by.css('.checkout_complete_container'));
+    this.finishOrderButton = element(by.linkText('FINISH'));
+    this.summaryInfo = element(by.css('.summary_info'));
+    this.checkoutInformationForm = {
+      fields: {
+        firstNameInput: element(by.id('first-name')),
+        lastNameInput: element(by.id('last-name')),
+        postalCodeInput: element(by.id('postal-code')),
+        continueButton: element(by.css('.btn_primary.cart_button')),
+      },
+    };
+    this.checkoutButton = element(by.css('a.btn_action.checkout_button'));
+    this.cartList = element(by.css('.cart_list'));
+    this.cartButton = element(by.id('shopping_cart_container'));
+    this.addToCartButton = element.all(by.css('button.btn_primary')).get(0);
     this.sortByContainer = element(by.css('.product_sort_container'));
     this.sortByNameAtoZOption = element(by.css('.product_sort_container [value="za"]'));
     this.sortByPriceHiLoOption = element(by.css('.product_sort_container [value="hilo"]'));
@@ -12,6 +27,13 @@ module.exports = class ProdutctListingPage {
     this.productPrices = element(by.css('#inventory_container.inventory_container'))
       .all(by.css('.inventory_item_price'));
     this.productList = element(by.css('.inventory_list'));
+  }
+
+  async fillCheckoutInformationForm() {
+    this.checkoutInformationForm.fields.firstNameInput.sendKeys('Mateusz');
+    this.checkoutInformationForm.fields.lastNameInput.sendKeys('Błoch');
+    this.checkoutInformationForm.fields.postalCodeInput.sendKeys('85-590');
+    this.checkoutInformationForm.fields.continueButton.click();
   }
 
   async sortByNameAtoZ() {
